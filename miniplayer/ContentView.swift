@@ -59,10 +59,12 @@ struct FullscreenPlayer: View {
                     Image(systemName: "ellipsis.circle")
                         .padding(.horizontal)
                 }
+                Spacer()
                 //Album art
                 HStack{
                     Image("sitstill")
                 }
+                Spacer().frame(height: 30)
                 //Track info
                 HStack{
                     VStack{
@@ -73,6 +75,7 @@ struct FullscreenPlayer: View {
                         Text("soy Pablo")
                     }
                 }
+                Spacer().frame(height: 15)
                 //User-reactions (do like but put sharing in the backlog)
                 HStack{
                     //like
@@ -83,6 +86,7 @@ struct FullscreenPlayer: View {
                     Image(systemName: "square.and.arrow.up")
                         .padding(.horizontal)
                 }
+                Spacer()
                 //Progress bar
                 VStack{
                     Slider(value: $progress, in: 0...100)
@@ -94,7 +98,28 @@ struct FullscreenPlayer: View {
                         Text("3:30")
                     }.padding(.horizontal)
                 }
+                Spacer()
                 //Play-controls
+                HStack{
+                    //shuffle-song
+                    Image(systemName: "shuffle")
+                        .padding(.horizontal)
+                    Spacer()
+                    //previous-song
+                    Image(systemName: "backward.fill")
+                    Spacer()
+                    //play/pause
+                    Image(systemName: "play.fill")
+                    Spacer()
+                    //next-song
+                    Image(systemName: "forward.fill")
+                    Spacer()
+                    //loop-song
+                    Image(systemName: "repeat")
+                        .padding(.horizontal)
+                }
+                Spacer()
+                //Lyrics (backlog)
             }
         }.foregroundColor(.white)
     }
