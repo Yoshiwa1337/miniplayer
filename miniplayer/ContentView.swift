@@ -47,7 +47,6 @@ struct ContentView: View {
                 HStack{
                     Text("Stick\nMan").padding()
                         .font(.title.bold())
-                        .kerning(1.5)
                     Spacer()
                 }
                 HStack{
@@ -55,9 +54,10 @@ struct ContentView: View {
                     Text("16,105,208 monthly listeners").padding(.horizontal)
                     Spacer()
                     Button("Follow"){}.padding(.horizontal)
+                        .fontWeight(.bold)
                     
                     
-                }
+                }.padding()
                 
                 //Subheaders
                 
