@@ -84,7 +84,16 @@ struct FullscreenPlayer: View {
                         .padding(.horizontal)
                 }
                 //Progress bar
-                Slider(value: $progress, in: 0...100)
+                VStack{
+                    Slider(value: $progress, in: 0...100)
+                        .padding(.horizontal)
+                    
+                    HStack{
+                        Text("0:00")
+                        Spacer()
+                        Text("3:30")
+                    }.padding(.horizontal)
+                }
                 //Play-controls
             }
         }.foregroundColor(.white)
