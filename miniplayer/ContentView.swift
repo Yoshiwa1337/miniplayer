@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack{
+        ZStack(alignment: .top){
             LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             HStack{
                 Image(systemName: "chevron.up").foregroundColor(.white)
