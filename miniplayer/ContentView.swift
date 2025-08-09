@@ -19,18 +19,21 @@ struct ContentView: View {
 
     var body: some View {
         ZStack(alignment: .top){
-            Image("universe")
-                .resizable()
-                .scaledToFill()
-                .cornerRadius(15)
-                .aspectRatio(contentMode: .fit).ignoresSafeArea()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-            LinearGradient(colors: [Color(red: 40/255, green: 40/255, blue: 40/255),.white.opacity(0.6)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
-                .mask(
-                    VStack(spacing: 0){
-                        Rectangle().frame(height: 490)
-                    }
-                )
+            Color(red: 40/255, green: 40/255, blue: 40/255).ignoresSafeArea() //Fixes white space image generates
+            VStack{
+                Image("universe")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 220)
+                    .clipped()
+                    .ignoresSafeArea()
+                LinearGradient(colors: [Color(red: 40/255, green: 40/255, blue: 40/255),Color(red: 200/255, green: 200/255, blue: 200/255)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+            }
+//                .mask(
+//                    VStack(spacing: 0){
+//                        Rectangle().frame(height: 490)
+//                    }
+//                )
             VStack{
                 //Top section
                 HStack{
@@ -150,6 +153,13 @@ struct ContentView: View {
                 //Miniplayer
                 
                 //Footer
+                HStack{
+                    Image(systemName: "safari").padding(.horizontal)
+                    Spacer()
+                    Image(systemName: "magnifyingglass")
+                    Spacer()
+                    Image(systemName: "person").padding(.horizontal)
+                }.foregroundColor(.blue).font(.system(size: 30))
                 
                 
                 Spacer()
@@ -162,7 +172,7 @@ struct ContentView: View {
                 }.foregroundColor(.blue)
                 
                 if isPlayerExpanded {
-                    FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(1)
+                    FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(0)
                 }
             }.foregroundColor(.white)
             
