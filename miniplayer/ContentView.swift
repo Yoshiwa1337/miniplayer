@@ -60,8 +60,35 @@ struct ContentView: View {
                 }.padding()
                 
                 //Subheaders
+                HStack{
+                    Text("Popular").padding(.horizontal)
+                    Spacer()
+                    Text("Albums")
+                    Spacer()
+                    Text("Singles").padding(.horizontal)
+                }
                 
                 //Albums
+                HStack{
+                    VStack{
+                        Image("sitstill")
+                            .resizable()
+                            .cornerRadius(15)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                        Text("Stick of Life")
+                        Text("2020")
+                    }
+                    VStack{
+                        Image("sitstill")
+                            .resizable()
+                            .cornerRadius(15)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                        Text("Fortune Favours")
+                        Text("2024")
+                    }
+                }
                 
                 //Songs
                 
