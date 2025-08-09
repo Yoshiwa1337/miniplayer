@@ -49,13 +49,13 @@ struct FullscreenPlayer: View {
                 //Top section
                 HStack{
                     Button(action: onArrowTap){
-                        Image(systemName: "chevron.up").foregroundColor(.white)
+                        Image(systemName: "chevron.up")
                             .padding(.horizontal)
                     }
                     Spacer()
-                    Text("Now playing").foregroundColor(.white)
+                    Text("Now playing")
                     Spacer()
-                    Image(systemName: "ellipsis.circle").foregroundColor(.white)
+                    Image(systemName: "ellipsis.circle")
                         .padding(.horizontal)
                 }
                 //Album art
@@ -73,7 +73,7 @@ struct FullscreenPlayer: View {
                     }
                 }
             }
-        }
+        }.foregroundColor(.white)
     }
 }
 
