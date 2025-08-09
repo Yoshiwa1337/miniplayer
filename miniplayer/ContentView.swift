@@ -39,6 +39,7 @@ struct ContentView: View {
 
 //Fullscreen view
 struct FullscreenPlayer: View {
+    @State private var progress = 50.0
     //add swipe down functionality later
     let onArrowTap: () -> Void
    
@@ -62,7 +63,7 @@ struct FullscreenPlayer: View {
                 HStack{
                     Image("sitstill")
                 }
-                //Song info
+                //Track info
                 HStack{
                     VStack{
                         //Title
@@ -72,6 +73,19 @@ struct FullscreenPlayer: View {
                         Text("soy Pablo")
                     }
                 }
+                //User-reactions (do like but put sharing in the backlog)
+                HStack{
+                    //like
+                    Image(systemName: "heart")
+                        .padding(.horizontal)
+                    Spacer()
+                    //share
+                    Image(systemName: "square.and.arrow.up")
+                        .padding(.horizontal)
+                }
+                //Progress bar
+                Slider(value: $progress, in: 0...100)
+                //Play-controls
             }
         }.foregroundColor(.white)
     }
