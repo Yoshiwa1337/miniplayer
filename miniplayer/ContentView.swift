@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//Default/miniplayer view
 struct ContentView: View {
     @State private var isPlayerExpanded = false
 
@@ -35,22 +36,42 @@ struct ContentView: View {
     }
     
 }
+
+//Fullscreen view
 struct FullscreenPlayer: View {
+    //add swipe down functionality later
     let onArrowTap: () -> Void
-    
+   
     var body: some View {
         ZStack(alignment: .top){
             LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
-            HStack{
-                Button(action: onArrowTap){
-                    Image(systemName: "chevron.up").foregroundColor(.white)
+            VStack{
+                //Top section
+                HStack{
+                    Button(action: onArrowTap){
+                        Image(systemName: "chevron.up").foregroundColor(.white)
+                            .padding(.horizontal)
+                    }
+                    Spacer()
+                    Text("Now playing").foregroundColor(.white)
+                    Spacer()
+                    Image(systemName: "ellipsis.circle").foregroundColor(.white)
                         .padding(.horizontal)
                 }
-                Spacer()
-                Text("Now playing").foregroundColor(.white)
-                Spacer()
-                Image(systemName: "ellipsis.circle").foregroundColor(.white)
-                    .padding(.horizontal)
+                //Album art
+                HStack{
+                    Image("sitstill")
+                }
+                //Song info
+                HStack{
+                    VStack{
+                        //Title
+                        Text("Feeling Lonely")
+                        Spacer().frame(height: 15)
+                        //Song
+                        Text("soy Pablo")
+                    }
+                }
             }
         }
     }
