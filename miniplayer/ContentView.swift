@@ -85,12 +85,67 @@ struct ContentView: View {
                             .cornerRadius(15)
                             .aspectRatio(contentMode: .fit)
                             .padding()
-                        Text("Fortune Favours")
+                        Text("Missing Colour")
                         Text("2024")
                     }
                 }
                 
                 //Songs
+                VStack{
+                    HStack{
+                        Text("Align help").opacity(0)
+                        Spacer()
+                        Text("Song").fontWeight(.bold)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        Spacer()
+                        Text("See all")
+                            .padding(.horizontal)
+                    }
+                    HStack{
+                        //img
+                        Image("sitstill")
+                            .resizable()
+                            .cornerRadius(15)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                        //details
+                        Text("Song name")
+                        Text("Stick Man")
+                        //start button
+                        Image(systemName: "play.circle.fill")
+                    }.foregroundColor(.blue)
+                    //2
+                    HStack{
+                        //img
+                        Image("sitstill")
+                            .resizable()
+                            .cornerRadius(15)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                        //details
+                        Text("Song name")
+                        Text("Stick Man")
+                        //start button
+                        Image(systemName: "play.circle.fill")
+                    }.foregroundColor(.blue)
+                    //3
+                    HStack{
+                        //img
+                        Image("sitstill")
+                            .resizable()
+                            .cornerRadius(15)
+                            .aspectRatio(contentMode: .fit)
+                            .padding()
+                        //details
+                        Text("Song name")
+                        Text("Stick Man")
+                        //start button
+                        Image(systemName: "play.circle.fill")
+                    }.foregroundColor(.blue)
+
+                }.padding(.top)
+                
+            
                 
                 //Miniplayer
                 
