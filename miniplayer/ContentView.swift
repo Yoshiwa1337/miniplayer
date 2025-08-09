@@ -18,7 +18,7 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack(){
+        ZStack(alignment: .top){
             Image("universe")
                 .resizable()
                 .scaledToFill()
@@ -32,16 +32,44 @@ struct ContentView: View {
                     }
                 )
             VStack{
-                Button("show player"){
-                    withAnimation(.spring()){
-                        isPlayerExpanded = true
-                    }
+                //Top section
+                HStack{
+                    Image(systemName: "chevron.left").padding(.horizontal)
+                    //Artist
+                    Spacer()
+                    Text("Artist")
+                    Spacer()
+                    //
+                    Image(systemName: "ellipsis.circle").padding(.horizontal)
                 }
-            }
+                
+                //Artist details
+                
+                //Subheaders
+                
+                //Albums
+                
+                //Songs
+                
+                //Miniplayer
+                
+                //Footer
+                
+                
+                Spacer()
+                VStack{
+                    Button("show player"){
+                        withAnimation(.spring()){
+                            isPlayerExpanded = true
+                        }
+                    }
+                }.foregroundColor(.blue)
+                
+                if isPlayerExpanded {
+                    FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(1)
+                }
+            }.foregroundColor(.white)
             
-            if isPlayerExpanded {
-                FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(1)
-            }
         }
     }
     
