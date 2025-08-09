@@ -66,7 +66,7 @@ struct ContentView: View {
                 HStack{
                     Text("Popular").padding(.horizontal)
                     Spacer()
-                    Text("Albums")
+                    Text("Albums").underline()
                     Spacer()
                     Text("Singles").padding(.horizontal)
                 }
@@ -104,47 +104,78 @@ struct ContentView: View {
                         Text("See all")
                             .padding(.horizontal)
                     }
-                    HStack{
-                        //img
-                        Image("sitstill")
-                            .resizable()
-                            .cornerRadius(15)
-                            .aspectRatio(contentMode: .fit)
-                            .padding()
-                        //details
-                        Text("Song name")
-                        Text("Stick Man")
-                        //start button
-                        Image(systemName: "play.circle.fill")
-                    }.foregroundColor(.blue)
+                    //1
+                    Button{
+                        
+                    } label:{
+                        
+                        HStack{
+                            //img
+                            Image("sitstill")
+                                .resizable()
+                                .cornerRadius(15)
+                                .frame(width:75, height: 50)
+                                .padding(10)
+                                .padding(.leading, 30)
+                            //details
+                            VStack{
+                                Text("Song name")
+                                Text("Stick Man")
+                            }
+                            Spacer()
+                            //start button
+                            Image(systemName: "play.circle.fill")
+                                .padding(.trailing, 30)
+                        }
+                    }
                     //2
-                    HStack{
-                        //img
-                        Image("sitstill")
-                            .resizable()
-                            .cornerRadius(15)
-                            .aspectRatio(contentMode: .fit)
-                            .padding()
-                        //details
-                        Text("Song name")
-                        Text("Stick Man")
-                        //start button
-                        Image(systemName: "play.circle.fill")
-                    }.foregroundColor(.blue)
+                    Button{
+                        
+                    } label:{
+                        
+                        HStack{
+                            //img
+                            Image("sitstill")
+                                .resizable()
+                                .cornerRadius(15)
+                                .frame(width:75, height: 50)
+                                .padding(10)
+                                .padding(.leading, 30)
+                            //details
+                            VStack{
+                                Text("Song name")
+                                Text("Stick Man")
+                            }
+                            Spacer()
+                            //start button
+                            Image(systemName: "play.circle.fill")
+                                .padding(.trailing, 30)
+                        }
+                    }
                     //3
-                    HStack{
-                        //img
-                        Image("sitstill")
-                            .resizable()
-                            .cornerRadius(15)
-                            .aspectRatio(contentMode: .fit)
-                            .padding()
-                        //details
-                        Text("Song name")
-                        Text("Stick Man")
-                        //start button
-                        Image(systemName: "play.circle.fill")
-                    }.foregroundColor(.blue)
+                    Button{
+                        
+                    } label:{
+                        
+                        HStack{
+                            //img
+                            Image("sitstill")
+                                .resizable()
+                                .cornerRadius(15)
+                                .frame(width:75, height: 50)
+                                .padding(10)
+                                .padding(.leading, 30)
+                            //details
+                            VStack{
+                                Text("Song name")
+                                Text("Stick Man")
+                            }
+                            Spacer()
+                            //start button
+                            Image(systemName: "play.circle.fill")
+                                .padding(.trailing, 30)
+                        }
+                    }
 
                 }.padding(.top)
                 
@@ -159,7 +190,7 @@ struct ContentView: View {
                     Image(systemName: "magnifyingglass")
                     Spacer()
                     Image(systemName: "person").padding(.horizontal)
-                }.foregroundColor(.blue).font(.system(size: 30))
+                }.foregroundColor(.black).font(.system(size: 30))
                 
                 
                 Spacer()
@@ -169,7 +200,7 @@ struct ContentView: View {
                             isPlayerExpanded = true
                         }
                     }
-                }.foregroundColor(.blue)
+                }
                 
                 if isPlayerExpanded {
                     FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(0)
