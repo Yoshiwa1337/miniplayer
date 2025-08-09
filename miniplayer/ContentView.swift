@@ -18,13 +18,18 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack{
-            Color.green
-            
+        ZStack(alignment: .top){
             VStack{
-                Button("show player"){
-                    withAnimation(.spring()){
-                        isPlayerExpanded = true
+                Image("universe")
+                    .resizable()
+                    .cornerRadius(15)
+                    .aspectRatio(contentMode: .fit).ignoresSafeArea()
+                Spacer()
+                VStack{
+                    Button("show player"){
+                        withAnimation(.spring()){
+                            isPlayerExpanded = true
+                        }
                     }
                 }
             }
