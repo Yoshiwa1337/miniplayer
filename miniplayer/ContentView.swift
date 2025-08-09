@@ -18,18 +18,23 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack(alignment: .top){
+        ZStack(){
+            Image("universe")
+                .resizable()
+                .scaledToFill()
+                .cornerRadius(15)
+                .aspectRatio(contentMode: .fit).ignoresSafeArea()
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            LinearGradient(colors: [Color(red: 40/255, green: 40/255, blue: 40/255),.white.opacity(0.6)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+                .mask(
+                    VStack(spacing: 0){
+                        Rectangle().frame(height: 490)
+                    }
+                )
             VStack{
-                Image("universe")
-                    .resizable()
-                    .cornerRadius(15)
-                    .aspectRatio(contentMode: .fit).ignoresSafeArea()
-                Spacer()
-                VStack{
-                    Button("show player"){
-                        withAnimation(.spring()){
-                            isPlayerExpanded = true
-                        }
+                Button("show player"){
+                    withAnimation(.spring()){
+                        isPlayerExpanded = true
                     }
                 }
             }
