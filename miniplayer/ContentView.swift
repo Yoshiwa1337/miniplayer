@@ -182,6 +182,8 @@ struct ContentView: View {
             
                 
                 //Miniplayer
+                BlurView(style: .systemChromeMaterial)
+                    .frame(height: 80)
                 
                 //Footer
                 HStack{
@@ -190,17 +192,17 @@ struct ContentView: View {
                     Image(systemName: "magnifyingglass")
                     Spacer()
                     Image(systemName: "person").padding(.horizontal)
-                }.foregroundColor(.black).font(.system(size: 30))
+                }.foregroundColor(.black).font(.system(size: 30)).ignoresSafeArea()
                 
                 
-                Spacer()
-                VStack{
-                    Button("show player"){
-                        withAnimation(.spring()){
-                            isPlayerExpanded = true
-                        }
-                    }
-                }
+//                Spacer()
+//                VStack{
+//                    Button("show player"){
+//                        withAnimation(.spring()){
+//                            isPlayerExpanded = true
+//                        }
+//                    }
+//                }
                 
                 if isPlayerExpanded {
                     FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(0)
