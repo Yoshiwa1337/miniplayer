@@ -10,6 +10,7 @@ import SwiftUI
 struct MiniPlayer: View {
     @State private var progress = 50.0
     @State var yPos: CGFloat = 0
+    @Binding var activeSong: Bool
     var animation: Namespace.ID
     @Binding var isPlayerExpanded: Bool
     var body: some View {
@@ -43,7 +44,6 @@ struct MiniPlayer: View {
         .onTapGesture {
             withAnimation(.spring()){isPlayerExpanded.toggle()}
         }
-        .offset(y: max(yPos, -0)) //doesnt allow dragging down
         .gesture(
             DragGesture(minimumDistance: 8, coordinateSpace: .local)
                 .onChanged{
@@ -56,10 +56,11 @@ struct MiniPlayer: View {
                     print(yPos)
                     print("bye")
                     withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){
-                        if shouldOpen { isPlayerExpanded = true }
-                        yPos = 0
+                        if shouldOpen && yPos == 0 { isPlayerExpanded = true }
+                        if yPos >= 80 { activeSong = false }
                     }
                     print(yPos)
+                    print("/////////")
                 }
         )
         .cornerRadius(25)
