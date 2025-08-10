@@ -92,7 +92,7 @@ struct FullscreenPlayer: View {
                 Spacer()
                 //Lyrics (backlog)
             }
-            .offset(y: max(yPos, 30)) //doesnt allow dragging up
+            .offset(y: max(yPos, 30)) //view follows dragging
             .gesture(
                 DragGesture(minimumDistance: 100, coordinateSpace: .local)
                     .onChanged{
@@ -101,7 +101,7 @@ struct FullscreenPlayer: View {
                     }
                     .onEnded{
                         //range for opening fullscreen
-                        value in let shouldClose = value.translation.height > 100 || value.predictedEndTranslation.height < 300
+                        value in let shouldClose = value.translation.height > 100 || value.predictedEndTranslation.height > 300
                         print(yPos)
                         print("hi")
                         withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){

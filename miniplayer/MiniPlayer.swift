@@ -44,20 +44,22 @@ struct MiniPlayer: View {
         .onTapGesture {
             withAnimation(.spring()){isPlayerExpanded.toggle()}
         }
+        .offset(y: max(yPos, -30)) //view follows dragging
         .gesture(
             DragGesture(minimumDistance: 8, coordinateSpace: .local)
                 .onChanged{
                     //tracking current drag y position
-                    value in yPos = max(value.translation.height, 0)
+                    value in yPos = value.translation.height
                 }
                 .onEnded{
                     //range for opening fullscreen
-                    value in let shouldOpen = value.translation.height < 15 || value.predictedEndTranslation.height > 9
+                    value in let shouldOpen = value.translation.height < -50
                     print(yPos)
                     print("bye")
                     withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){
-                        if shouldOpen && yPos == 0 { isPlayerExpanded = true }
+                        if shouldOpen { isPlayerExpanded = true }
                         if yPos >= 80 { activeSong = false }
+                        yPos = 0
                     }
                     print(yPos)
                     print("/////////")
