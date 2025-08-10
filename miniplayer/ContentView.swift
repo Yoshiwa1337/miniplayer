@@ -9,7 +9,7 @@ import SwiftUI
 
 //Default/miniplayer view
 struct ContentView: View {
-    @State private var isPlayerExpanded = false
+    @State var isPlayerExpanded = false
     @Namespace var animation
 
     func player(){
@@ -183,7 +183,7 @@ struct ContentView: View {
             
                 
                 //Miniplayer
-                MiniPlayer()
+                MiniPlayer(animation: animation, isPlayerExpanded: $isPlayerExpanded)
                 
                 //Footer
                 HStack{
@@ -204,11 +204,17 @@ struct ContentView: View {
 //                    }
 //                }
                 
-                if isPlayerExpanded {
-                    FullscreenPlayer(onArrowTap: player).transition(.move(edge: .top).combined(with: .opacity)).zIndex(0)
-                }
             }.foregroundColor(.white)
             
+        }
+        //fix for alignment
+        .overlay{
+            
+            if isPlayerExpanded {
+                FullscreenPlayer(onArrowTap: player)
+                    .opacity(isPlayerExpanded ? 1:0)
+                    .transition(.move(edge: .bottom).combined(with: .opacity)).zIndex(1000)
+            }
         }
     }
     

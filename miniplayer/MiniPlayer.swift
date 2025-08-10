@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MiniPlayer: View {
     @State private var progress = 50.0
+    var animation: Namespace.ID
+    @Binding var isPlayerExpanded: Bool
     var body: some View {
         VStack{
             
@@ -34,12 +36,16 @@ struct MiniPlayer: View {
                 .padding(.horizontal)
                 .padding(.vertical, -19.0)
         }
-        .frame(height: 80)
+        .frame(maxHeight: isPlayerExpanded ? .infinity: 80)
         .background(BlurView(style: .systemChromeMaterialDark))
+        //tap to expand
+        .onTapGesture {
+            withAnimation(.spring()){isPlayerExpanded.toggle()}
+        }
         .cornerRadius(25)
     }
 }
 
-#Preview {
-    MiniPlayer()
-}
+//#Preview {
+//    MiniPlayer(animation: animation, isPlayerExpanded: $isPlayerExpanded)
+//}
