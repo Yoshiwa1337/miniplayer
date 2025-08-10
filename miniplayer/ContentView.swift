@@ -107,7 +107,7 @@ struct ContentView: View {
                     }
                     //1
                     Button{
-                        
+                        withAnimation(.spring()){isPlayerExpanded.toggle()}
                     } label:{
                         
                         HStack{
@@ -131,7 +131,7 @@ struct ContentView: View {
                     }
                     //2
                     Button{
-                        
+                        withAnimation(.spring()){isPlayerExpanded.toggle()}
                     } label:{
                         
                         HStack{
@@ -155,7 +155,7 @@ struct ContentView: View {
                     }
                     //3
                     Button{
-                        
+                        withAnimation(.spring()){isPlayerExpanded.toggle()}
                     } label:{
                         
                         HStack{
