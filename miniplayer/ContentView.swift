@@ -186,7 +186,7 @@ struct ContentView: View {
                 
                 //Miniplayer
                 if activeSong{
-                    MiniPlayer(animation: animation, isPlayerExpanded: $isPlayerExpanded)
+                    MiniPlayer(activeSong: $activeSong, animation: animation, isPlayerExpanded: $isPlayerExpanded)
                 }
                 
                 //Footer
