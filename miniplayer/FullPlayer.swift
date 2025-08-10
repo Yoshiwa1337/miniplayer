@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FullscreenPlayer: View {
     @State private var progress = 50.0
+    @Binding var activeSong: Bool
     //add swipe down functionality later
     let onArrowTap: () -> Void
    
@@ -90,6 +91,9 @@ struct FullscreenPlayer: View {
                 Spacer()
                 //Lyrics (backlog)
             }
+//            .onAppear{
+//                activeSong = true
+//            }
         }.foregroundColor(.white)
     }
 }
