@@ -10,6 +10,7 @@ import SwiftUI
 //Default/miniplayer view
 struct ContentView: View {
     @State private var isPlayerExpanded = false
+    @Namespace var animation
 
     func player(){
         withAnimation(.spring()){
@@ -182,8 +183,7 @@ struct ContentView: View {
             
                 
                 //Miniplayer
-                BlurView(style: .systemChromeMaterial)
-                    .frame(height: 80)
+                MiniPlayer()
                 
                 //Footer
                 HStack{

@@ -34,6 +34,9 @@ struct MiniPlayer: View {
                 .padding(.horizontal)
                 .padding(.vertical, -19.0)
         }
+        .frame(height: 80)
+        .background(BlurView(style: .systemChromeMaterialDark))
+        .cornerRadius(25)
     }
 }
 
