@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MiniPlayer: View {
     @State private var progress = 50.0
+    @State private var yPos: CGFloat = 0
     var animation: Namespace.ID
     @Binding var isPlayerExpanded: Bool
     var body: some View {
@@ -42,6 +43,22 @@ struct MiniPlayer: View {
         .onTapGesture {
             withAnimation(.spring()){isPlayerExpanded.toggle()}
         }
+        .offset(y: min(yPos, 0)) //doesnt allow dragging down
+        .gesture(
+            DragGesture(minimumDistance: 8, coordinateSpace: .local)
+                .onChanged{
+                    //tracking current drag y position
+                    value in yPos = max(value.translation.height, 0)
+                }
+                .onEnded{
+                    //range for opening fullscreen
+                    value in let shouldOpen = value.translation.height < 15 || value.predictedEndTranslation.height > 9
+                    withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){
+                        if shouldOpen { isPlayerExpanded = true }
+                        yPos = 0
+                    }
+                }
+        )
         .cornerRadius(25)
     }
 }
