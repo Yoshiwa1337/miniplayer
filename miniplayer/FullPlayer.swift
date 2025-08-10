@@ -16,6 +16,7 @@ struct FullscreenPlayer: View {
     @State var likeText = "heart"
     @State var likeColour = false
 
+    //like btn functionality
     func liked() -> Void {
         likeColour.toggle()
         if likeColour{
