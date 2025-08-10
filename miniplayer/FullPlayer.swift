@@ -11,12 +11,15 @@ struct FullscreenPlayer: View {
     @State private var progress = 50.0
     @Binding var activeSong: Bool
     @State var yPos: CGFloat = 0
+    @State var offset: CGFloat = 0
     //add swipe down functionality later
     let onArrowTap: () -> Void
    
     var body: some View {
         ZStack(alignment: .top){
-            LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
+            LinearGradient(colors: [.blue, .black], startPoint: .top, endPoint: .bottom)
+                .cornerRadius(20)
+                .ignoresSafeArea()
             VStack{
                 //Top section
                 HStack{
@@ -29,7 +32,7 @@ struct FullscreenPlayer: View {
                     Spacer()
                     Image(systemName: "ellipsis.circle")
                         .padding(.horizontal)
-                }
+                }.padding(.top)
                 Spacer()
                 //Album art
                 HStack{
@@ -92,28 +95,30 @@ struct FullscreenPlayer: View {
                 Spacer()
                 //Lyrics (backlog)
             }
-            .offset(y: max(yPos, 30)) //view follows dragging
+//            .onAppear{
+//                activeSong = true
+//            }
+        }.foregroundColor(.white)
+            .offset(y: offset) //view follows dragging
             .gesture(
                 DragGesture(minimumDistance: 100, coordinateSpace: .local)
                     .onChanged{
                         //tracking current drag y position
                         value in yPos = max(value.translation.height, 0)
+                        offset = value.translation.height
                     }
                     .onEnded{
                         //range for opening fullscreen
                         value in let shouldClose = value.translation.height > 100 || value.predictedEndTranslation.height > 300
                         print(yPos)
                         print("hi")
-                        withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){
-                            if shouldClose && yPos != 0 { onArrowTap() }
+                        withAnimation(.spring(response: 0.5, dampingFraction: 0.95, blendDuration: 0.95)){
+                            offset = 0
+                            if shouldClose { onArrowTap() }
                         }
                         print(yPos)
                     }
             )
-//            .onAppear{
-//                activeSong = true
-//            }
-        }.foregroundColor(.white)
     }
 }
 
