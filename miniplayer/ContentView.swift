@@ -217,7 +217,7 @@ struct ContentView: View {
             if isPlayerExpanded {
                 FullscreenPlayer(activeSong: $activeSong, onArrowTap: player)
                     .opacity(isPlayerExpanded ? 1:0)
-                    .transition(.move(edge: .bottom).combined(with: .opacity)).zIndex(1000)
+                    .transition(.move(edge: .bottom).combined(with: .opacity)).zIndex(1)
             }
         }
     }

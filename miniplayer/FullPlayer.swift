@@ -10,6 +10,7 @@ import SwiftUI
 struct FullscreenPlayer: View {
     @State private var progress = 50.0
     @Binding var activeSong: Bool
+    @State var yPos: CGFloat = 0
     //add swipe down functionality later
     let onArrowTap: () -> Void
    
@@ -91,6 +92,24 @@ struct FullscreenPlayer: View {
                 Spacer()
                 //Lyrics (backlog)
             }
+            .offset(y: max(yPos, 30)) //doesnt allow dragging up
+            .gesture(
+                DragGesture(minimumDistance: 100, coordinateSpace: .local)
+                    .onChanged{
+                        //tracking current drag y position
+                        value in yPos = max(value.translation.height, 0)
+                    }
+                    .onEnded{
+                        //range for opening fullscreen
+                        value in let shouldClose = value.translation.height > 100 || value.predictedEndTranslation.height < 300
+                        print(yPos)
+                        print("hi")
+                        withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){
+                            if shouldClose && yPos != 0 { onArrowTap() }
+                        }
+                        print(yPos)
+                    }
+            )
 //            .onAppear{
 //                activeSong = true
 //            }
