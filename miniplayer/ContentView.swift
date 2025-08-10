@@ -16,6 +16,7 @@ struct ContentView: View {
     func player(){
         withAnimation(.spring()){
             isPlayerExpanded.toggle()
+            activeSong = true
         }
     }
 
@@ -214,7 +215,7 @@ struct ContentView: View {
         .overlay{
             
             if isPlayerExpanded {
-                FullscreenPlayer(onArrowTap: player)
+                FullscreenPlayer(activeSong: $activeSong, onArrowTap: player)
                     .opacity(isPlayerExpanded ? 1:0)
                     .transition(.move(edge: .bottom).combined(with: .opacity)).zIndex(1000)
             }
