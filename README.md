@@ -6,3 +6,4 @@ Current features:
 -> Like button
 -> Collapsable fullscreen where background is visible
 -> Drag up to expand and down to collapse mini player (click to expand also)
+
