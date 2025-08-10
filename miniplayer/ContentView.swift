@@ -9,9 +9,12 @@ import SwiftUI
 
 //Default/miniplayer view
 struct ContentView: View {
+    //initialised vars
     @State var isPlayerExpanded = false
     @State var activeSong = false
     @Namespace var animation
+    let iconSize: CGFloat = 35
+    let mainIconSize: CGFloat = 44
 
     func player(){
         withAnimation(.spring()){
@@ -32,11 +35,7 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 LinearGradient(colors: [Color(red: 40/255, green: 40/255, blue: 40/255),Color(red: 200/255, green: 200/255, blue: 200/255)], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             }
-//                .mask(
-//                    VStack(spacing: 0){
-//                        Rectangle().frame(height: 490)
-//                    }
-//                )
+            
             VStack{
                 //Top section
                 HStack{
@@ -129,6 +128,7 @@ struct ContentView: View {
                             //start button
                             Image(systemName: "play.circle.fill")
                                 .padding(.trailing, 30)
+                                .font(.system(size: iconSize))
                         }
                     }
                     //2
@@ -153,6 +153,7 @@ struct ContentView: View {
                             //start button
                             Image(systemName: "play.circle.fill")
                                 .padding(.trailing, 30)
+                                .font(.system(size: iconSize))
                         }
                     }
                     //3
@@ -177,6 +178,7 @@ struct ContentView: View {
                             //start button
                             Image(systemName: "play.circle.fill")
                                 .padding(.trailing, 30)
+                                .font(.system(size: iconSize))
                         }
                     }
 
@@ -188,25 +190,20 @@ struct ContentView: View {
                 if activeSong{
                     MiniPlayer(activeSong: $activeSong, animation: animation, isPlayerExpanded: $isPlayerExpanded)
                 }
+                Spacer()
                 
                 //Footer
-                HStack{
+                HStack(){
                     Image(systemName: "safari").padding(.horizontal)
                     Spacer()
                     Image(systemName: "magnifyingglass")
                     Spacer()
                     Image(systemName: "person").padding(.horizontal)
-                }.foregroundColor(.black).font(.system(size: 30)).ignoresSafeArea()
+                }.padding(.top).foregroundColor(.black)
+                    .font(.system(size: iconSize))
+                    .ignoresSafeArea()
                 
                 
-//                Spacer()
-//                VStack{
-//                    Button("show player"){
-//                        withAnimation(.spring()){
-//                            isPlayerExpanded = true
-//                        }
-//                    }
-//                }
                 
             }.foregroundColor(.white)
             

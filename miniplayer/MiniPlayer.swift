@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MiniPlayer: View {
+    //initialised vars
     @State private var progress = 50.0
     @State var yPos: CGFloat = 0
     @Binding var activeSong: Bool
@@ -54,15 +55,11 @@ struct MiniPlayer: View {
                 .onEnded{
                     //range for opening fullscreen
                     value in let shouldOpen = value.translation.height < -50
-                    print(yPos)
-                    print("bye")
                     withAnimation(.spring(response: 0.45, dampingFraction: 0.85)){
                         if shouldOpen { isPlayerExpanded = true }
                         if yPos >= 80 { activeSong = false }
                         yPos = 0
                     }
-                    print(yPos)
-                    print("/////////")
                 }
         )
         .cornerRadius(25)

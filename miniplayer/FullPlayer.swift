@@ -8,12 +8,28 @@
 import SwiftUI
 
 struct FullscreenPlayer: View {
+    //initialised vars
     @State private var progress = 50.0
     @Binding var activeSong: Bool
     @State var yPos: CGFloat = 0
     @State var offset: CGFloat = 0
+    @State var likeText = "heart"
+    @State var likeColour = false
+
+    func liked() -> Void {
+        likeColour.toggle()
+        if likeColour{
+            likeText = "heart.fill"
+        }
+        else{
+            likeText = "heart"
+        }
+    }
+    
     //add swipe down functionality later
     let onArrowTap: () -> Void
+    
+    
    
     var body: some View {
         ZStack(alignment: .top){
@@ -53,8 +69,17 @@ struct FullscreenPlayer: View {
                 //User-reactions (do like but put sharing in the backlog)
                 HStack{
                     //like
-                    Image(systemName: "heart")
-                        .padding(.horizontal)
+                    Button(action: liked){
+                        if likeColour{
+                            Image(systemName: likeText)
+                                .padding(.horizontal)
+                            .foregroundColor(.red)
+                        }
+                        else{
+                            Image(systemName: likeText)
+                                .padding(.horizontal)
+                        }
+                    }
                     Spacer()
                     //share
                     Image(systemName: "square.and.arrow.up")
@@ -83,7 +108,8 @@ struct FullscreenPlayer: View {
                     Image(systemName: "backward.fill")
                     Spacer()
                     //play/pause
-                    Image(systemName: "play.fill")
+                    Image(systemName: "play.circle.fill")
+                        .font(.system(size: 40))
                     Spacer()
                     //next-song
                     Image(systemName: "forward.fill")
@@ -95,9 +121,6 @@ struct FullscreenPlayer: View {
                 Spacer()
                 //Lyrics (backlog)
             }
-//            .onAppear{
-//                activeSong = true
-//            }
         }.foregroundColor(.white)
             .offset(y: offset) //view follows dragging
             .gesture(
@@ -108,15 +131,12 @@ struct FullscreenPlayer: View {
                         offset = value.translation.height
                     }
                     .onEnded{
-                        //range for opening fullscreen
+                        //range for closing fullscreen
                         value in let shouldClose = value.translation.height > 100 || value.predictedEndTranslation.height > 300
-                        print(yPos)
-                        print("hi")
                         withAnimation(.spring(response: 0.5, dampingFraction: 0.95, blendDuration: 0.95)){
                             offset = 0
                             if shouldClose { onArrowTap() }
                         }
-                        print(yPos)
                     }
             )
     }
